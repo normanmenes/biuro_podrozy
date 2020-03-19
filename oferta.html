@@ -76,20 +76,7 @@
 			}
 			
 			function button() {
-				var fullname = document.getElementById('fullname').value;
-				var email = document.getElementById('email').value;
-				var location = document.getElementById('location').value;
-				var start_date = document.getElementById('start_date').value;
-				var end_date = document.getElementById('end_date').value;
-				var people = document.getElementById('people').value;
-				var content = document.getElementById('content').value;
-				
-				if (fullname == "" || email == "" || location == "" || start_date == "" || end_date == "" || end_date-start_date <=0 || people < 1 || content == "") {
-					document.getElementById('response').innerHTML = "Uzupełnij właściwie formularz.";
-				}
-					else {
-						document.getElementById('response').innerHTML = "Zgłoszenie wysłano!";
-					}
+				document.getElementById('response').innerHTML = "Zgłoszenie wysłano!";
 			}
 			
 			window.onload = function() {

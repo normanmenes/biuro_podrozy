@@ -6,83 +6,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 		<title>CZTERY PORY ROKU - biuro podróży</title>
 		<link rel="Shortcut icon" href="favicon.png" />
-		<link rel="stylesheet" href="style.css" type="text/css">
 		<meta name="description" content="Biuro podróży na każdą porę roku">
 		<meta name="keywords" content="pory roku, biuro podróży, odpoczynek, relaks">
 		<meta name="author" content="Norman Menes">
 		<link rel="stylesheet" href="style.css" type="text/css">
-		<link href="https://fonts.googleapis.com/css?family=Kalam|Lato" rel="stylesheet">
-		
-		<script type="text/javascript">
-
-		var location_season = new Array();
-			location_season["frwio"]=300;
-			location_season["kelat"]=250;
-			location_season["sljes"]=100;
-			location_season["grzim"]=400;
-
-			function getLocation() {
-
-				var locSelect = document.getElementById('location');
-				return location_season[locSelect.value];
-			}
-
-			function getNumberofdays() {
-
-				var data_od = Date.parse(document.getElementById('start_date').value);
-				var data_do = Date.parse(document.getElementById('end_date').value);
-
-				var result = Math.round((data_do-data_od)/86400000);
-
-				return result;
-
-			}
-
-			function getNumberofpeople() {
-				var numpeople = parseInt(document.getElementById('people').value)
-
-				if (numpeople == 1)
-				var paymentforpeople = 0;
-				else
-				var paymentforpeople = (numpeople-1) * 65;
-
-				return paymentforpeople;
-
-			}
-
-			function costs() {
-				var totalcosts = getLocation() * getNumberofdays() + getNumberofpeople() * getNumberofdays() ;
-				if (totalcosts > 0) {
-				document.getElementById('Price').innerHTML = "Twoje przybliżone koszty: " + totalcosts + "&nbsp;zł";
-				}
-			}
-			
-			function getDate() {
-				var today = new Date();
-				var dd = today.getDate();
-				var mm = today.getMonth()+1;
-				var yyyy = today.getFullYear();
-				
-				if(dd<10) {
-					dd = '0'+dd
-					} 
-				if(mm<10) {
-					mm = '0'+mm
-					} 
-
-				today = yyyy + '/' + mm + '/' + dd;
-				console.log(today);
-				document.getElementById('start_date').value = today;
-			}
-			
-			function button() {
-				document.getElementById('response').innerHTML = "Zgłoszenie wysłano!";
-			}
-			
-			window.onload = function() {
-				getDate();
-			};
-		</script>
+		<link href="https://fonts.googleapis.com/css?family=Kalam|Lato:300,400,400i,700,900&display=swap&subset=latin-ext" rel="stylesheet">
+		<script src="myscripts.js"></script>
 	</head>
 	
 	<body>
@@ -126,44 +55,38 @@
 					Granatspitzgruppe to część Wysokich Taurów w Alpach Wschodnich. Leży na terytorium Austrii, na pograniczu dwóch landów: Tyrolu i Salzburga. Najwyższym szczytem grupy jest Muntanitz (3232 m n.p.m.). My zapraszamy w rejon Enzingerboden, kurortu położonego na wysokości 1468 m n.p.m., w dolinie Stubachtal, nad jeziorem Stause, na terenie Parku Narodowego Wysokie Taury. Wchodzi w obszar grupy Glockner. Z Enzingerboden mamy 32 km do Kaprun I 37 km do Zell am See. Nasz hotel znajduje się ok. 900 m powyżej Enzingerboden, w niezwykłej scenerii alpejskich sczytów.
 				</p>
 				<br><br><br><br>
+				
+				
 				<h1>Formularz zgłoszeniowy</h1>
-				<p>
-
-	<form method="get" onsubmit="return false">
-		<h3>Imię i nazwisko:</h3>
-			<input type="text" name='fullname' style="color: #000000; width: 500px; height: 30px" required><br><br>
-
-		<h3>e-mail:</h3>						
-			<input type="text" name='email' style="color: #000000; width: 500px; height: 30px" required><br><br>
-
-        <h3>Kierunek podróży</h3>
- 
-        <select id="location" name='location' style="color: #000000 width: 500px; height: 30px" onchange="costs()" required>
-
-	        <option value="">Wybierz kierunek podróży</option>
-			<option value="frwio" style="color: #000000">Franschhoek (wiosna)</option>
-			<option value="kelat" style="color: #000000">Kenia (lato)</option>
-			<option value="sljes" style="color: #000000">Ślęza (jesień)</option>
-			<option value="grzim" style="color: #000000">Granatspitzgruppe (zima)</option>
-       </select><br>
-
-		<h3>Termin:</h3>
-		<input type="date" id="start_date" name='start_date' onchange="costs()" required>
-		<input type="date" id="end_date" name='end_date' value="2020-03-29" min="2020-01-01" max="2022-01-01" onchange="costs()" required><br><br>
-
-		<h3>Liczba osób:</h3>
-		<input type="number" id="people" name='people' min="1" value="1" style="color: #000000; width: 50px; height: 30px" onclick="costs()" required><br><br>
-
-        <div id="Price"></div>
-
-		<h3>Treść:</h3>
-			<textarea name='content' cols="200%" rows="20" placeholder="Tu wpisz treść wiadomości" style="color: #000000; width: 100%;" required></textarea><br><br><br>
-		
-		<input type="submit" onclick="button()">
-		<div id="response" style="color: red"></div>
-            
-	</form>
-			</p>
+				<form method="get" onsubmit="return false">
+					<div class="message-details">
+						<input type="text" id="fullname" name='fullname' placeholder="Podaj imię i nazwisko" required>	
+						<input type="text" id="email" name='email' placeholder="Podaj adres e-mail" required>
+						<textarea id="content" name='content' placeholder="Treść twojej wiadomości" required></textarea>
+						<div id="error"></div>
+					</div>
+					<div class="travel-details">
+						<fieldset>
+							<legend>Szczegóły podróży:</legend>
+							<label for="location">Kierunek podróży</label>
+							<select id="location" name='location' onchange="costs()" required>
+								<option value="">Wybierz kierunek podróży</option>
+								<option value="frwio">Franschhoek (wiosna)</option>
+								<option value="kelat">Kenia (lato)</option>
+								<option value="sljes">Ślęza (jesień)</option>
+								<option value="grzim">Granatspitzgruppe (zima)</option>
+							</select><br>
+							<label for="start_date">Wylot</label>
+								<input type="date" id="start_date" name='start_date' onchange="costs()" required>
+							<label for="start_date">Powrót</label>
+								<input type="date" id="end_date" name='end_date' onchange="costs()" required>
+							<label for="people">Liczba osób:</label>
+								<input type="number" id="people" name='people' min="1" value="1" onclick="costs()" required>
+							<div id="price"></div>
+						</fieldset>	
+					</div>
+						<button type="submit" onclick="validation()">Prześlij zgłoszenie</button>
+				</form>
 			</article>
 		</section>
 		
@@ -172,9 +95,9 @@
 				<a href="#" class="switch">MENU</a>
 				<p>MENU</p>
 				<ul class="menu">
-					<li><a href="index.html" style="color: white">O nas</a></li>
-					<li><a href="oferta.html" style="color: white">Oferta</a></li>
-					<li><a href="kontakt.html" style="color: white">Kontakt</a></li>
+					<li><a href="index.html">O nas</a></li>
+					<li><a href="oferta.html">Oferta</a></li>
+					<li><a href="kontakt.html">Kontakt</a></li>
 				</ul>
 			</div>
 			<div class="stopka">
@@ -182,8 +105,8 @@
 					DANE KONTAKTOWE<br><br>
 					ul. Bukowska 53<br>
 					60-810 Poznań<br>
-					<a href="mailto:biuro@4pr.pl" style="color: white">mail: biuro@4pr.pl</a><br>
-					<a href="tel:+48500578981" style="color: white">tel. 500 578 981</a>
+					<a href="mailto:biuro@4pr.pl">mail: biuro@4pr.pl</a><br>
+					<a href="tel:+48500578981">tel. 500 578 981</a>
 				</p>
 			</div>
 			<div class="stopka">

@@ -6,6 +6,8 @@ html
 body
 {
 	font-family: 'Lato', sans-serif;
+	background: rgb(255,255,255);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(226,226,255,1) 35%, rgba(238,252,255,1) 100%);
 }
 
 
@@ -14,6 +16,7 @@ body
 
 header
 {
+	background-image: url("img/header-background.jpg");
 	display: block;
 	padding-bottom: 100px;
 }
@@ -26,6 +29,7 @@ header h1
 	font-family: 'Kalam', cursive;
 	font-size: 45px;
 	color: #7579FF;
+	margin-left: 20px;
 }
 
 header h1 a
@@ -162,9 +166,119 @@ article img
 	padding-left: 15px;
 	padding-right: 15px;
 }
+/*---------FORMULARZ---------*/
+form {
+	width: 70%;
+	height: 100%;
+	margin: 0 auto;
+}
+form .message-details, form .travel-details {
+	float: left;
+	width: 46%;
+	padding: 2%;
+	height: auto;
+}
+form .contact-1, form .contact-2 {
+	float: left;
+	width: 46%;
+	padding: 2%;
+	height: auto;
+}
+label {
+	color: #7b7b7b;
+}
 
-
-
+input#fullname {
+	outline: none;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 20px; 
+}
+input#fullname:hover label {
+	color: #000000;
+} 
+input, select, textarea {
+	outline: none;
+	width: 100%;
+	max-width: 100%;
+	height: 35px;
+	font-size: 1.05vw;
+	margin-bottom: 20px; 
+    border: 1px solid #cccccc;
+    padding-left: 5%;
+}
+input#people {
+    width: 10% !important;
+}
+textarea {
+	min-height: 250px;
+    padding: 3% 0 0 5% !important;
+    resize: none;
+}
+fieldset {
+	border: none;
+	padding: 30px;
+}
+legend {
+    margin-left: -20px !important;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    letter-spacing: 0.04em;
+    font-weight: 300;
+}
+form button {
+    clear: both;
+    display: block;
+    padding: 5px 18px;
+    background-color: transparent;
+    border: 1px solid #3b3b3b;
+    color: #3b3b3b;
+    font-size: 1.2vw;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    outline: none;
+    margin: 0 auto;
+}
+form button:hover {
+    clear: both;
+    display: block;
+    padding: 5px 18px;
+    background-color: #3b3b3b;
+    border: 1px solid #3b3b3b;
+    color: #ffffff;
+    font-size: 1.2vw;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    margin: 0 auto;
+    cursor: pointer;
+}
+#price {
+    background: #f1f1f1;
+    color: #3e3e3e;
+    padding: 10px 15px;
+    text-align: center;
+    display: none;
+}
+#price strong {
+    font-weight: 900;
+    color: green;
+}
+#error {
+	background: #f1f1f1;
+    color: red;
+    padding: 10px 15px;
+    text-align: center;
+    display: none;
+}
+#error strong {
+    font-weight: 900;
+}
+.contact-2 textarea {
+	min-height: 145px;
+	width: 1000px;
+    padding: 3% 0 0 5% !important;
+    resize: none;
+}
 /*---------STOPKA---------*/
 
 footer
@@ -186,4 +300,7 @@ footer .stopka
 	padding-left: 20px;
 	padding-bottom: 20px;
 	padding-right: 20px;
+}
+footer a {
+	color: white;
 }
